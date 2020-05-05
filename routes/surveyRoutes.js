@@ -31,7 +31,7 @@ module.exports = (app) => {
     const path = req.url;
     const surveyID = path.split("/").reverse()[2];
     const survey = await Survey.find({ _id: surveyID });
-    const updatedNo = (survey[0].no -= 1);
+    const updatedNo = (survey[0].no += 1);
 
     const updatedSurvey = await Survey.updateOne(
       { _id: surveyID },
