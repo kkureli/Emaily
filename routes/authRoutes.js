@@ -17,7 +17,7 @@ module.exports = (app) => {
   );
 
   app.get("/api/logout", (req, res) => {
-    req.logout(); //kill the cookies
+    req.logout();
     res.redirect("/");
   });
 
