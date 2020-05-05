@@ -4,12 +4,11 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import Payments from "./Payments";
 
-const Header = (props) => {
-  const { auth } = props;
+const Header = ({ auth }) => {
   const renderContent = () => {
     switch (auth) {
       case null:
-        return null;
+        return;
       case false:
         return (
           <li>
