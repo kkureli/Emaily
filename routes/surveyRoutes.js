@@ -17,7 +17,7 @@ module.exports = (app) => {
 
   app.get("/api/surveys/:key/yes", async (req, res) => {
     const path = req.url;
-    const surveyID = path.split("/").reverse()[1];
+    const surveyID = path.split("/").reverse()[2];
     const survey = await Survey.find({ _id: surveyID });
     const updatedYes = (survey[0].yes += 1);
 
@@ -29,13 +29,13 @@ module.exports = (app) => {
 
   app.get("/api/surveys/:key/no", async (req, res) => {
     const path = req.url;
-    const surveyID = path.split("/").reverse()[1];
+    const surveyID = path.split("/").reverse()[2];
     const survey = await Survey.find({ _id: surveyID });
     const updatedNo = (survey[0].no -= 1);
 
     const updatedSurvey = await Survey.updateOne(
       { _id: surveyID },
-      { yes: updatedNo }
+      { no: updatedNo }
     );
   });
 
